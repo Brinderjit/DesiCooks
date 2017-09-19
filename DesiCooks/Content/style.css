@@ -108,6 +108,13 @@ h3{
     font-family: sans-serif;
     font-size: 16px;
 }
+.logo
+{
+    margin-left:3%;
+    height:98%;
+    margin-top:0%;
+    margin-bottom:1%;
+}
 .holder ul li a{
         padding: 8px 5px!important;
        color: #fbfbfb;
@@ -120,15 +127,12 @@ h3{
     font-family: sans-serif;
 }
 .holder ul li:first-child { border-right: none; }
-.search {
-    clear: both;
-    float: right;
-    margin-top: 1px;
-}
 .footer p {
         color:white;
 }
 .searchbtn{
+    float:right;
+        margin-right: 1%;
      display: inline-block;
   box-sizing: content-box;
   cursor: pointer;
@@ -139,9 +143,7 @@ h3{
   color: rgba(255,255,255,0.9);
   background: #c46232;
   text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
-      margin-left: 10px;
-    margin-top: 25px;
-    margin-right:5px;
+    
 }
 .holder{
 
