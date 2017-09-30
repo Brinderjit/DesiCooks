@@ -59,15 +59,12 @@ font-size:14px;
          <br /><br />
          <asp:Label ID="lblCity" runat="server" CssClass="label" Width="100px" Text="City:"></asp:Label>
            <asp:TextBox ID="txtCity" runat="server" CssClass="textres"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="cityValidator" runat="server" ForeColor="Red" ControlToValidate="txtCity" ErrorMessage="Enter a City"></asp:RequiredFieldValidator>
          <br /><br />
          <asp:Label ID="lblPostalCode" runat="server" CssClass="label" Width="100px" Text="Postal Code:"></asp:Label>
          <asp:TextBox ID="txtPostalCode" runat="server" CssClass="textres"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="postalValidator" runat="server" ForeColor="Red" ControlToValidate="txtPostalCode" ErrorMessage="Enter Postal Code"></asp:RequiredFieldValidator>
          <br /><br />
           <asp:Label ID="lbPhoneNumber" runat="server" CssClass="label" Width="100px" Text="Phone number:"></asp:Label>
          <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="textres" MaxLength="12" ></asp:TextBox>
-             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="txtPhoneNumber" runat="server" ErrorMessage="Enter Postal Code"></asp:RequiredFieldValidator>
              
          <br /><br />
              <asp:Label ID="lblProvince" runat="server" CssClass="label" Width="100px" Text="Province:"></asp:Label>
@@ -98,7 +95,7 @@ font-size:14px;
              <br />
          <asp:Label ID="Label1" runat="server" CssClass="label" Width="100px" Text="Delivery type:"></asp:Label>
             
-             <asp:RadioButton ID="rdoPickup" runat="server" text="Pickup"/><asp:RadioButton ID="rdoDeliver" runat="server" text="Delivery"/>
+             <asp:RadioButton ID="rdoPickup" runat="server" GroupName="delivery" text="Pickup"/>&nbsp;&nbsp;<asp:RadioButton ID="rdoDeliver" GroupName="delivery" runat="server" text="Delivery"/>
       <br />  <br /> <asp:Label ID="lblcomments" runat="server" CssClass="label" Width="100px" Text="Comments:"></asp:Label>
          <asp:TextBox ID="txtcomments" runat="server" TextMode="multiline" Columns="50" Rows="5" CssClass="textres"></asp:TextBox>
          <br />
