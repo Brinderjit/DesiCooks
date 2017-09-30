@@ -61,8 +61,13 @@ namespace DesiCooks.Data_Layer
         }
         public OrderModel checkUser(String firstName,string lastName)
         {
-            SqlDataReader rdr;
             OrderModel order = new OrderModel();
+            int error = 0;
+            try
+            {
+
+                SqlDataReader rdr;
+           
             conn = new SqlConnection(conString);
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
@@ -108,10 +113,19 @@ namespace DesiCooks.Data_Layer
                        
                     }
                 }
-           
-        
-            
-            conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                error = 1;
+
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+
             return order;
         }
 

@@ -51,8 +51,9 @@ namespace DesiCooks
                     rdoDeliver.Checked = true;
                 }
                 lstProvince.SelectedValue= order.province.ToString();
-                
-                // chkbxlstFood.SelectedIndex = order.food;
+
+                // chkbxlstFood.SelectedIndex = order.food;\
+                HiddenField1.Value = "0";
 
             }
             else

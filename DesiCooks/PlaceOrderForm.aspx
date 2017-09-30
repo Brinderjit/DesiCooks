@@ -48,19 +48,27 @@ font-size:14px;
          <div style="padding-top: 20px;padding-left: 20px;">
               <asp:Label ID="lblFirstName" runat="server" CssClass="label" Width="100px" Text="First Name:"></asp:Label>
          <asp:TextBox ID="txtFirstName" runat="server" CssClass="textres"></asp:TextBox>
+              <asp:RequiredFieldValidator ID="firstNameValidator" ControlToValidate="txtFirstName" ForeColor="Red" runat="server" ErrorMessage="Enter First Name"></asp:RequiredFieldValidator>
          <br /><br />
           <asp:Label ID="lblLastName" runat="server" CssClass="label" Width="100px" Text="Last Name:"></asp:Label>
          <asp:TextBox ID="txtLastName" runat="server" CssClass="textres"></asp:TextBox>
-            <asp:Button ID="rememberBtn" runat="server" Text="Remember me" CssClass="rememberBtn" OnClick="rememberBtn_Click" Width="139px"/>
+              <asp:RequiredFieldValidator ID="lastNameValidator" ControlToValidate="txtLastName" runat="server" ForeColor="Red" ErrorMessage="Enter Last Name"></asp:RequiredFieldValidator>
+             <br /> <br />
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="rememberBtn" runat="server" Text="Remember me" CssClass="rememberBtn" OnClick="rememberBtn_Click" Width="139px"/>
          <br /><br />
          <asp:Label ID="lblCity" runat="server" CssClass="label" Width="100px" Text="City:"></asp:Label>
            <asp:TextBox ID="txtCity" runat="server" CssClass="textres"></asp:TextBox>
+              <asp:RequiredFieldValidator ID="cityValidator" runat="server" ForeColor="Red" ControlToValidate="txtCity" ErrorMessage="Enter a City"></asp:RequiredFieldValidator>
          <br /><br />
          <asp:Label ID="lblPostalCode" runat="server" CssClass="label" Width="100px" Text="Postal Code:"></asp:Label>
          <asp:TextBox ID="txtPostalCode" runat="server" CssClass="textres"></asp:TextBox>
+              <asp:RequiredFieldValidator ID="postalValidator" runat="server" ForeColor="Red" ControlToValidate="txtPostalCode" ErrorMessage="Enter Postal Code"></asp:RequiredFieldValidator>
          <br /><br />
           <asp:Label ID="lbPhoneNumber" runat="server" CssClass="label" Width="100px" Text="Phone number:"></asp:Label>
-         <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="textres"></asp:TextBox>
+         <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="textres" MaxLength="12" ></asp:TextBox>
+             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="txtPhoneNumber" runat="server" ErrorMessage="Enter Postal Code"></asp:RequiredFieldValidator>
+             
          <br /><br />
              <asp:Label ID="lblProvince" runat="server" CssClass="label" Width="100px" Text="Province:"></asp:Label>
              <asp:DropDownList ID="lstProvince" runat="server" CssClass="textres" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="provinceId">

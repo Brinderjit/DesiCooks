@@ -31,6 +31,15 @@ namespace DesiCooks {
         protected global::System.Web.UI.WebControls.TextBox txtFirstName;
         
         /// <summary>
+        /// firstNameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator firstNameValidator;
+        
+        /// <summary>
         /// lblLastName control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace DesiCooks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLastName;
+        
+        /// <summary>
+        /// lastNameValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator lastNameValidator;
         
         /// <summary>
         /// rememberBtn control.
@@ -76,6 +94,15 @@ namespace DesiCooks {
         protected global::System.Web.UI.WebControls.TextBox txtCity;
         
         /// <summary>
+        /// cityValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator cityValidator;
+        
+        /// <summary>
         /// lblPostalCode control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace DesiCooks {
         protected global::System.Web.UI.WebControls.TextBox txtPostalCode;
         
         /// <summary>
+        /// postalValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator postalValidator;
+        
+        /// <summary>
         /// lbPhoneNumber control.
         /// </summary>
         /// <remarks>
@@ -110,6 +146,15 @@ namespace DesiCooks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// lblProvince control.

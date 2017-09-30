@@ -6,10 +6,13 @@
 <head runat="server">
     <link href="Content/restaurant.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+   
+    
     <style>
         .searchtxt {
             font-family: sans-serif;
-            width: 65%;
+                width: 62%;
             display: inline-block;
             -webkit-box-sizing: content-box;
             -moz-box-sizing: content-box;
@@ -24,7 +27,12 @@
             text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
         }
 
-        
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: normal!important;
+        }
 
         .container2 {
             height: 30%;
