@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">
+<head lang="en" runat="server">
     <link href="Content/restaurant.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-   
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <style>
         .searchtxt {

@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DesiCooks.Data_Layer;
 using DesiCooks.Models;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 namespace DesiCooks
 {
     public partial class PlaceOrderForm : System.Web.UI.Page
@@ -30,10 +33,19 @@ namespace DesiCooks
                 txtPhoneNumber.Text = order.phoneNumber.ToString();
                 txtCity.Text = order.city;
                 txtcomments.Text = order.comments;
-               //for(int i=0;i<order.food.Count;i++)
-               // {
-                   
-                    for (int i = 0; i <chkbxlstFood.Items.Count; i++)
+                //for(int i=0;i<order.food.Count;i++)
+                // {
+                int i = 1;
+                foreach (RepeaterItem item in repeaterFoodItems.Items)
+                {
+                    CheckBox foodChkBx = (CheckBox)item.FindControl("foodItem");
+                    if (order.food.Contains(i))
+                    {
+                        foodChkBx.Checked = true;
+                    }
+                    i++;
+                }
+              /*  for (int i = 0; i <chkbxlstFood.Items.Count; i++)
                     {
                         if (order.food.Contains(Convert.ToInt32(chkbxlstFood.Items[i].Value)))
                         {
@@ -41,7 +53,7 @@ namespace DesiCooks
                         }
                     }
                   
-              //  }
+              //  }*/
                 if(order.deliveryType=="Pickup")
                 {
                     rdoPickup.Checked=true;
@@ -83,7 +95,17 @@ namespace DesiCooks
             {
                 order.deliveryType = "Delivery";
             }
-            for (int i = 0; i < chkbxlstFood.Items.Count; i++)
+            int i = 1;
+            foreach (RepeaterItem item in repeaterFoodItems.Items)
+            {
+               CheckBox foodChkBx = (CheckBox)item.FindControl("foodItem");
+                if (foodChkBx.Checked)
+                {
+                    order.food.Add(Convert.ToInt32(i));
+                }
+                i++;
+            }
+          /*  for (int i = 0; i < chkbxlstFood.Items.Count; i++)
             {
                 if (chkbxlstFood.Items[i].Selected)
                 {
@@ -91,12 +113,40 @@ namespace DesiCooks
                    order.food.Add(Convert.ToInt32(chkbxlstFood.Items[i].Value));
                 }
 
-            }
+            }*/
 
             
             // chkbxlstFood.SelectedIndex = order.food;
             _dataObject.insertOrder(order);
             HiddenField1.Value = "1";
         }
+
+        protected void addImageButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("addImage.aspx");
         }
+      
+        protected void menuDownlodBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Clear();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("Content-Disposition",
+                    "attachment;filename=\"DesiCooksMenu.pdf\"");
+
+                Context.Response.WriteFile(@"\Content\document\DesiCooksMenu.pdf");
+
+                Response.Flush();
+
+                Response.End();
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
+          
+        }
+    }
     }

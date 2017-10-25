@@ -4,6 +4,7 @@
     <link href="Content/restaurant.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/style.css" rel="stylesheet" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
@@ -67,6 +68,10 @@ font-size:14px;
          <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="textres" MaxLength="12" ></asp:TextBox>
              
          <br /><br />
+            
+						
+					
+					
              <asp:Label ID="lblProvince" runat="server" CssClass="label" Width="100px" Text="Province:"></asp:Label>
              <asp:DropDownList ID="lstProvince" runat="server" CssClass="textres" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="provinceId">
                  <asp:ListItem>Alberta</asp:ListItem>
@@ -83,7 +88,7 @@ font-size:14px;
               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DesiCooksConnectionString %>" SelectCommand="SELECT * FROM [province]"></asp:SqlDataSource>
 <br /><br />
                <asp:Label ID="lblFood" runat="server"  CssClass="label"  Text="Select Food and Drinks:"></asp:Label>
-             <asp:CheckBoxList ID="chkbxlstFood" runat="server" CssClass="chkbxlst" DataSourceID="SqlDataSource2" DataTextField="name" DataValueField="foodId" >
+           <!--  <asp:CheckBoxList ID="chkbxlstFood" runat="server" CssClass="chkbxlst" DataSourceID="SqlDataSource2" DataTextField="name" DataValueField="foodId" >
                  <asp:ListItem>Lemon drizzle cake</asp:ListItem>
                  <asp:ListItem>Chilli con carne</asp:ListItem>
                  <asp:ListItem>Yummy scrummy carrot</asp:ListItem>
@@ -92,14 +97,42 @@ font-size:14px;
                  <asp:ListItem>Raspberry Bakewell cake</asp:ListItem>
               </asp:CheckBoxList>
               <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DesiCooksConnectionString %>" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
-             <br />
+             <br />-->
+             <asp:Repeater ID="repeaterFoodItems" runat="server" DataSourceID="SqlDataSource3">
+    <HeaderTemplate>
+        <div class="recommended-grids ">
+						
+    </HeaderTemplate>
+    <ItemTemplate>
+
+        <div class="col-md-2 resent-grid recommended-grid sports-recommended-grid">
+							<div class="resent-grid-img recommended-grid-img">
+								<img src='<%# Eval("imagePath") %>' alt="" style="width: 100%; height: 100%;">
+							</div>
+            <div class="resent-grid-info recommended-grid-info">
+                <h5><%# Eval("name") %></h5>
+                <asp:CheckBox ID="foodItem"  runat="server" />
+                
+            </div>
+						</div>
+      
+    </ItemTemplate>
+    <FooterTemplate>
+       	<div class="clearfix"> </div>
+					</div>
+    </FooterTemplate>
+</asp:Repeater>
+             
+              <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="Data Source=DESKTOP-656PRJ2\SQLEXPRESS;Initial Catalog=DesiCooks;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
+            <a href="~/addImage.aspx"  runat="server">Add Images</a><asp:Button ID="menuDownlodBtn" runat="server" Text="Download Menu" CausesValidation="false" OnClick="menuDownlodBtn_Click" /><br />
          <asp:Label ID="Label1" runat="server" CssClass="label" Width="100px" Text="Delivery type:"></asp:Label>
             
              <asp:RadioButton ID="rdoPickup" runat="server" GroupName="delivery" text="Pickup"/>&nbsp;&nbsp;<asp:RadioButton ID="rdoDeliver" GroupName="delivery" runat="server" text="Delivery"/>
       <br />  <br /> <asp:Label ID="lblcomments" runat="server" CssClass="label" Width="100px" Text="Comments:"></asp:Label>
          <asp:TextBox ID="txtcomments" runat="server" TextMode="multiline" Columns="50" Rows="5" CssClass="textres"></asp:TextBox>
          <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnPlace" runat="server" Text="Place Order" CssClass="button" Width="80px" OnClick="btnPlace_Click" /><br /><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <asp:Button ID="btnPlace" runat="server" Text="Place Order" CssClass="button" Width="80px" OnClick="btnPlace_Click" /><br /><br />
              </div>
          </div>
     <asp:HiddenField ID="HiddenField1" runat="server" />

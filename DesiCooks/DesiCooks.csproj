@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addImage.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -143,6 +144,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addImage.aspx.cs">
+      <DependentUpon>addImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addImage.aspx.designer.cs">
+      <DependentUpon>addImage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Data Layer\DataAccess.cs" />
     <Compile Include="DesiCooksM.Master.cs">
       <DependentUpon>DesiCooksM.Master</DependentUpon>

@@ -12,6 +12,38 @@ namespace DesiCooks.Data_Layer
     {
         SqlConnection conn;
         private static String conString = System.Configuration.ConfigurationManager.ConnectionStrings["DesiCooksConnectionString"].ToString();
+        public int insertFood(string title,string path,string description)
+        {
+            int error = 0;
+            try
+            {
+
+
+                conn = new SqlConnection(conString);
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "proc_insertNewFood";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@title", SqlDbType.VarChar).Value = title;
+                cmd.Parameters.Add("@path", SqlDbType.VarChar).Value = path;
+                cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = description;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                
+            }
+            catch (Exception e)
+            {
+                error = 1;
+
+            }
+            finally
+            {
+                
+                conn.Close();
+
+            }
+            return 1;
+        }
         public int insertOrder(OrderModel order)
         {
             int error=0;
