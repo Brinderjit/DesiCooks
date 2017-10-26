@@ -5,7 +5,7 @@
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Content/style.css" rel="stylesheet" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+   
     <script type="text/javascript">
         $(document).ready(function () {
           
@@ -26,135 +26,176 @@
 
     </script>
     <style>
-        .rememberBtn{
-           display: inline-block;
-  box-sizing: content-box;
-  cursor: pointer;
-  padding: 5px 10px;
-  border: 1px solid #c4622f;
-  border-radius: 3px;
-font-family:sans-serif;
-font-size:14px;
-  color: rgba(255,255,255,0.9);
-  background: #c4622f;
-  text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+        .rememberBtn {
+            color: #fff;
+            border-color: #c46232;
+            background-color: #c46232;
+        }
     
+        
+        .h1, .h2, .h3, h1, h2, h3 {
+            color:black !important;
+   
+}
+      
+
+        .control-label
+        {
+            font-size: 15px !important;
+            color: black !important;
         }
 .chkbxlst {
     margin-left: 137px;
 }</style> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <div class="container1"><h2 style="padding-left: 20px;font-family:sans-serif">Place an order</h2>
-         <div style="padding-top: 20px;padding-left: 20px;">
-              <asp:Label ID="lblFirstName" runat="server" CssClass="label" Width="100px" Text="First Name:"></asp:Label>
-         <asp:TextBox ID="txtFirstName" runat="server" CssClass="textres"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="firstNameValidator" ControlToValidate="txtFirstName" ForeColor="Red" runat="server" ErrorMessage="Enter First Name"></asp:RequiredFieldValidator>
-         <br /><br />
-          <asp:Label ID="lblLastName" runat="server" CssClass="label" Width="100px" Text="Last Name:"></asp:Label>
-         <asp:TextBox ID="txtLastName" runat="server" CssClass="textres"></asp:TextBox>
-              <asp:RequiredFieldValidator ID="lastNameValidator" ControlToValidate="txtLastName" runat="server" ForeColor="Red" ErrorMessage="Enter Last Name"></asp:RequiredFieldValidator>
-             <br /> <br />
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="rememberBtn" runat="server" Text="Remember me" CssClass="rememberBtn" OnClick="rememberBtn_Click" Width="139px"/>
-         <br /><br />
-         <asp:Label ID="lblCity" runat="server" CssClass="label" Width="100px" Text="City:"></asp:Label>
-           <asp:TextBox ID="txtCity" runat="server" CssClass="textres"></asp:TextBox>
-         <br /><br />
-         <asp:Label ID="lblPostalCode" runat="server" CssClass="label" Width="100px" Text="Postal Code:"></asp:Label>
-         <asp:TextBox ID="txtPostalCode" runat="server" CssClass="textres"></asp:TextBox>
-         <br /><br />
-          <asp:Label ID="lbPhoneNumber" runat="server" CssClass="label" Width="100px" Text="Phone number:"></asp:Label>
-         <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="textres" MaxLength="12" ></asp:TextBox>
-             
-         <br /><br />
-            
-						
-					
-					
-             <asp:Label ID="lblProvince" runat="server" CssClass="label" Width="100px" Text="Province:"></asp:Label>
-             <asp:DropDownList ID="lstProvince" runat="server" CssClass="textres" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="provinceId">
-                 <asp:ListItem>Alberta</asp:ListItem>
-                 <asp:ListItem>British Columbia</asp:ListItem>
-                 <asp:ListItem>Manitoba</asp:ListItem>
-                 <asp:ListItem>New Brunswick</asp:ListItem>
-                 <asp:ListItem>Newfoundland and Labrador</asp:ListItem>
-                 <asp:ListItem>Nova Scotia</asp:ListItem>
-                 <asp:ListItem>Ontario</asp:ListItem>
-                 <asp:ListItem>Prince Edward Island</asp:ListItem>
-                 <asp:ListItem>Quebec</asp:ListItem>
-                 <asp:ListItem>Saskatchewan</asp:ListItem>
-              </asp:DropDownList>
-              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DesiCooksConnectionString %>" SelectCommand="SELECT * FROM [province]"></asp:SqlDataSource>
-<br /><br />
-               <asp:Label ID="lblFood" runat="server"  CssClass="label"  Text="Select Food and Drinks:"></asp:Label>
-           <!--  <asp:CheckBoxList ID="chkbxlstFood" runat="server" CssClass="chkbxlst" DataSourceID="SqlDataSource2" DataTextField="name" DataValueField="foodId" >
-                 <asp:ListItem>Lemon drizzle cake</asp:ListItem>
-                 <asp:ListItem>Chilli con carne</asp:ListItem>
-                 <asp:ListItem>Yummy scrummy carrot</asp:ListItem>
-                 <asp:ListItem>Chocolate brownies</asp:ListItem>
-                 <asp:ListItem>Spiced carrot &amp; lentil soup</asp:ListItem>
-                 <asp:ListItem>Raspberry Bakewell cake</asp:ListItem>
-              </asp:CheckBoxList>
-              <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DesiCooksConnectionString %>" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
-             <br />-->
-             <asp:Repeater ID="repeaterFoodItems" runat="server" DataSourceID="SqlDataSource3">
-    <HeaderTemplate>
-        <div class="recommended-grids ">
-						
-    </HeaderTemplate>
-    <ItemTemplate>
-
-        <div class="col-md-2 resent-grid recommended-grid sports-recommended-grid">
-							<div class="resent-grid-img recommended-grid-img">
-								<img src='<%# Eval("imagePath") %>' alt="" style="width: 100%; height: 100%;">
-							</div>
-            <div class="resent-grid-info recommended-grid-info">
-                <h5><%# Eval("name") %></h5>
-                <asp:CheckBox ID="foodItem"  runat="server" />
-                
-            </div>
-						</div>
       
-    </ItemTemplate>
-    <FooterTemplate>
-       	<div class="clearfix"> </div>
-					</div>
-    </FooterTemplate>
-</asp:Repeater>
-             
-              <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="Data Source=DESKTOP-656PRJ2\SQLEXPRESS;Initial Catalog=DesiCooks;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
-            <a href="~/addImage.aspx"  runat="server">Add Images</a><asp:Button ID="menuDownlodBtn" runat="server" Text="Download Menu" CausesValidation="false" OnClick="menuDownlodBtn_Click" /><br />
-         <asp:Label ID="Label1" runat="server" CssClass="label" Width="100px" Text="Delivery type:"></asp:Label>
-            
-             <asp:RadioButton ID="rdoPickup" runat="server" GroupName="delivery" text="Pickup"/>&nbsp;&nbsp;<asp:RadioButton ID="rdoDeliver" GroupName="delivery" runat="server" text="Delivery"/>
-      <br />  <br /> <asp:Label ID="lblcomments" runat="server" CssClass="label" Width="100px" Text="Comments:"></asp:Label>
-         <asp:TextBox ID="txtcomments" runat="server" TextMode="multiline" Columns="50" Rows="5" CssClass="textres"></asp:TextBox>
-         <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <asp:Button ID="btnPlace" runat="server" Text="Place Order" CssClass="button" Width="80px" OnClick="btnPlace_Click" /><br /><br />
-             </div>
-         </div>
-    <asp:HiddenField ID="HiddenField1" runat="server" />
-    <!--model popup-->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Place Order</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Ok</button>
-      </div>
+     <div class="panel panel-default">
+         <div class="panel-body"><h2>Place an order</h2></div>
+           
+    <div class="panel-body">
+        <div class="form-group">
+            <asp:Label ID="lblFirstName" runat="server" class="control-label col-sm-2" Text="First Name:"></asp:Label>
+            <div class="col-sm-4">
+                <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="firstNameValidator" ControlToValidate="txtFirstName" ForeColor="Red" runat="server" ErrorMessage="Enter First Name"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lblLastName" runat="server" class="control-label col-sm-2" Text="Last Name:"></asp:Label>
+            <div class="col-sm-4">
+                <asp:TextBox ID="txtLastName" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="lastNameValidator" ControlToValidate="txtLastName" runat="server" ForeColor="Red" ErrorMessage="Enter Last Name"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <asp:Button ID="rememberBtn" runat="server" Text="Remember me" CssClass="btn btn-sm rememberBtn" OnClick="rememberBtn_Click" />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lblCity" runat="server" class="control-label col-sm-2" Text="City:"></asp:Label>
+
+            <div class="col-sm-4">
+                <asp:TextBox ID="txtCity" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lblPostalCode" runat="server" class="control-label col-sm-2" Text="Postal Code:"></asp:Label>
+            <div class="col-sm-4">
+                <asp:TextBox ID="txtPostalCode" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lbPhoneNumber" runat="server" CssClass="control-label col-sm-2" Text="Phone number:"></asp:Label>
+            <div class="col-sm-4">
+                <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control" MaxLength="12"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lblProvince" runat="server" CssClass="control-label col-sm-2" Text="Province:"></asp:Label>
+
+            <div class="col-sm-4">
+                <asp:DropDownList ID="lstProvince" runat="server" CssClass="form-control" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="provinceId">
+                    <asp:ListItem>Alberta</asp:ListItem>
+                    <asp:ListItem>British Columbia</asp:ListItem>
+                    <asp:ListItem>Manitoba</asp:ListItem>
+                    <asp:ListItem>New Brunswick</asp:ListItem>
+                    <asp:ListItem>Newfoundland and Labrador</asp:ListItem>
+                    <asp:ListItem>Nova Scotia</asp:ListItem>
+                    <asp:ListItem>Ontario</asp:ListItem>
+                    <asp:ListItem>Prince Edward Island</asp:ListItem>
+                    <asp:ListItem>Quebec</asp:ListItem>
+                    <asp:ListItem>Saskatchewan</asp:ListItem>
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DesiCooksConnectionString %>" SelectCommand="SELECT * FROM [province]"></asp:SqlDataSource>
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lblFood" runat="server" CssClass="control-label col-sm-2" Text="Select Food and Drinks:"></asp:Label>
+            <a href="~/addImage.aspx" class="btn btn-primary" style="float: right;margin-right:2px;margin-left:12px" runat="server">Add food</a>
+            <asp:Button ID="menuDownlodBtn" runat="server" class="btn btn-primary btn-md " Style="float: right" Text="Download Menu" CausesValidation="false" OnClick="menuDownlodBtn_Click" />
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <asp:Repeater ID="repeaterFoodItems" runat="server" DataSourceID="SqlDataSource3">
+                    <HeaderTemplate>
+                        <div class="recommended-grids ">
+                    </HeaderTemplate>
+                    <ItemTemplate>
+
+                        <div class="col-md-2 resent-grid recommended-grid sports-recommended-grid">
+                            <div class="resent-grid-img recommended-grid-img">
+                                <img src='<%# Eval("imagePath") %>' alt="" style="width: 163px; height: 107px;">
+                            </div>
+                            <div class="resent-grid-info recommended-grid-info">
+                                <h5><%# Eval("name") %></h5>
+                                <asp:CheckBox ID="foodItem" runat="server" />
+
+                            </div>
+                        </div>
+
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        <div class="clearfix"></div>
+                        </div>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="Data Source=DESKTOP-656PRJ2\SQLEXPRESS;Initial Catalog=DesiCooks;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <asp:Label ID="Label1" runat="server" CssClass="control-label col-sm-2" Text="Delivery type:"></asp:Label>
+            <div class="col-sm-4">
+                <div class="radio">
+                    <asp:RadioButton ID="rdoPickup" runat="server" GroupName="delivery" Text="Pickup" />
+                </div>
+                <div class="radio">
+                    <asp:RadioButton ID="rdoDeliver" GroupName="delivery" runat="server" Text="Delivery" />
+                </div>
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="lblcomments" runat="server" CssClass="control-label col-sm-2" Text="Comments:"></asp:Label>
+            <div class="col-sm-6">
+                <asp:TextBox ID="txtcomments" runat="server" TextMode="multiline" Rows="5" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <asp:Button ID="btnPlace" runat="server" Text="Place Order" CssClass="btn btn-lg btn-primary" OnClick="btnPlace_Click" />
+
+            </div>
+        </div>
+
+
+        <asp:HiddenField ID="HiddenField1" runat="server" />
+        <!--model popup-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Place Order</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+         </div>
 
 </asp:Content>

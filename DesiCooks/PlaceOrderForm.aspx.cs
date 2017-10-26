@@ -132,10 +132,10 @@ namespace DesiCooks
             {
                 Response.Clear();
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("Content-Disposition",
-                    "attachment;filename=\"DesiCooksMenu.pdf\"");
+               // Response.AddHeader("Content-Disposition",
+               //     "attachment;filename=\"DesiCooksMenu.pdf\"");
 
-                Context.Response.WriteFile(@"\Content\document\DesiCooksMenu.pdf");
+                Context.Response.WriteFile("http://storage.googleapis.com/desicooks_bucket/FoodmenuPdfs/DesiCooksMenu.pdf");
 
                 Response.Flush();
 

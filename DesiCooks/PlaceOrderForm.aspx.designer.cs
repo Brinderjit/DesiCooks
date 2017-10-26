@@ -166,22 +166,13 @@ namespace DesiCooks {
         protected global::System.Web.UI.WebControls.Label lblFood;
         
         /// <summary>
-        /// chkbxlstFood control.
+        /// menuDownlodBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkbxlstFood;
-        
-        /// <summary>
-        /// SqlDataSource2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.Button menuDownlodBtn;
         
         /// <summary>
         /// repeaterFoodItems control.
@@ -200,15 +191,6 @@ namespace DesiCooks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
-        
-        /// <summary>
-        /// menuDownlodBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button menuDownlodBtn;
         
         /// <summary>
         /// Label1 control.

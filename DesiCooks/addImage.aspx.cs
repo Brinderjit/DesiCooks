@@ -13,6 +13,7 @@ namespace DesiCooks
     public partial class addImage : System.Web.UI.Page
     {
         private static DataAccess _dataObject = new DataAccess();
+        private static ImageUploader _uploadImage = new ImageUploader("desicooks_bucket");
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -62,16 +63,13 @@ namespace DesiCooks
 
             return bmpOut;
         }
-        protected void insertNewFood_Click(object sender, EventArgs e)
+        protected async void insertNewFood_Click(object sender, EventArgs e)
         {
             try
             {
                 var image = imageUpload.PostedFile;
-                var ThumbnailuploadFilesDir = System.Web.HttpContext.Current.Server.MapPath("~/Content/images");
-                string databasePath = "/Content/images/" + image.FileName;
-                string fullThumbnailUrl = ThumbnailuploadFilesDir + "\\" + image.FileName;
-                _dataObject.insertFood(txtFoodTitle.Text, databasePath, txtFoodDescription.Text);
-                image.SaveAs(fullThumbnailUrl);
+                var imageUrl = await _uploadImage.UploadImage(image, txtFoodTitle.Text);
+                _dataObject.insertFood(txtFoodTitle.Text, imageUrl, txtFoodDescription.Text);
                 HiddenField1.Value = "2";
             }
             catch(Exception ex)
