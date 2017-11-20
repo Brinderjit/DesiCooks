@@ -19,11 +19,11 @@ namespace DesiCooks.Data_Layer
         }
 
         // [START uploadimage]
-        public async Task<String> UploadImage(HttpPostedFile image, string name)
+        public string UploadImage(HttpPostedFile image, string name)
         {
             var imageAcl = PredefinedObjectAcl.PublicRead;
 
-            var imageObject = await _storageClient.UploadObjectAsync(
+            var imageObject = _storageClient.UploadObject(
                 bucket: _bucketName,
                 objectName: name,
                 contentType: image.ContentType,

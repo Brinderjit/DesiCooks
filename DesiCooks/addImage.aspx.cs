@@ -1,19 +1,23 @@
 ﻿using DesiCooks.Data_Layer;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using DesiCooks.Models;
 
 namespace DesiCooks
 {
     public partial class addImage : System.Web.UI.Page
     {
         private static DataAccess _dataObject = new DataAccess();
-        private static ImageUploader _uploadImage = new ImageUploader("desicooks_bucket");
+        private readonly ImageUploader _uploadImage;
+        private readonly DatastoreImage _datastore;
+        public addImage()
+        {
+            _uploadImage = new ImageUploader("desicooks_bucket");
+            _datastore = new DatastoreImage("desicooks-180117");      
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -63,19 +67,42 @@ namespace DesiCooks
 
             return bmpOut;
         }
-        protected async void insertNewFood_Click(object sender, EventArgs e)
+        protected  void insertNewFood_Click(object sender, EventArgs e)
         {
+
+            ImageMetaDeta imageObj = new ImageMetaDeta();
+            imageObj.title = txtFoodTitle.Text;
+            imageObj.url = "";
+            imageObj.description = txtFoodDescription.Text;
             try
             {
-                var image = imageUpload.PostedFile;
-                var imageUrl = await _uploadImage.UploadImage(image, txtFoodTitle.Text);
-                _dataObject.insertFood(txtFoodTitle.Text, imageUrl, txtFoodDescription.Text);
+                HttpPostedFile image = imageUpload.PostedFile;
+                //    var imageUrl = Create(image,txtFoodTitle.Text,txtFoodDescription.Text);
+                //  imageObj.url = imageUrl.Result;
+                string imageUrl= _uploadImage.UploadImage(image, imageObj.title);
+                imageObj.url = "https://storage.googleapis.com/desicooks_bucket/"+imageObj.title;
+                _datastore.Create(imageObj);
+               _dataObject.insertFood(txtFoodTitle.Text, imageObj.url, txtFoodDescription.Text);
                 HiddenField1.Value = "2";
             }
             catch(Exception ex)
             {
-
+                ExceptionLogging.SendExcepToDB(ex);
             }
         }
+       /* public async Task<string> Create(HttpPostedFile image,string title ,string description)
+        {
+            string imageUrl="";
+            try
+            {     
+               imageUrl = await 
+               
+            }
+            catch(Exception ex)
+            {
+                ExceptionLogging.SendExcepToDB(ex);
+            }
+            return imageUrl;
+        }*/
     }
 }

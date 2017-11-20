@@ -43,8 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Api.CommonProtos, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.CommonProtos.1.1.0\lib\net45\Google.Api.CommonProtos.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Api.Gax, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Api.Gax.2.0.0\lib\net45\Google.Api.Gax.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Api.Gax.Grpc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Api.Gax.Grpc.2.0.0\lib\net45\Google.Api.Gax.Grpc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Google.Api.Gax.Rest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
@@ -75,8 +83,24 @@
       <HintPath>..\packages\Google.Apis.Storage.v1.1.27.1.881\lib\net45\Google.Apis.Storage.v1.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Google.Cloud.Datastore.V1, Version=2.0.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Cloud.Datastore.V1.2.0.0\lib\net45\Google.Cloud.Datastore.V1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Google.Cloud.Storage.V1, Version=2.0.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Cloud.Storage.V1.2.0.0\lib\net45\Google.Cloud.Storage.V1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Grpc.Auth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Auth.1.4.0\lib\net45\Grpc.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Grpc.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.1.4.0\lib\net45\Grpc.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -198,6 +222,8 @@
     <Compile Include="addImage.aspx.designer.cs">
       <DependentUpon>addImage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Data Layer\ExceptionLogging.cs" />
+    <Compile Include="Data Layer\GoogleCloudDataStoreCRUD.cs" />
     <Compile Include="Data Layer\ImageUploader.cs" />
     <Compile Include="Data Layer\DataAccess.cs" />
     <Compile Include="DesiCooksM.Master.cs">
@@ -210,6 +236,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageMetaDeta.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="PlaceOrderForm.aspx.cs">
       <DependentUpon>PlaceOrderForm.aspx</DependentUpon>
@@ -254,7 +281,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Grpc.Core.1.4.0\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.1.4.0\build\net45\Grpc.Core.targets'))" />
   </Target>
+  <Import Project="..\packages\Grpc.Core.1.4.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.4.0\build\net45\Grpc.Core.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

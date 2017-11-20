@@ -8,6 +8,9 @@ using DesiCooks.Data_Layer;
 using DesiCooks.Models;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Text;
+using System.Net;
 
 namespace DesiCooks
 {
@@ -128,24 +131,74 @@ namespace DesiCooks
       
         protected void menuDownlodBtn_Click(object sender, EventArgs e)
         {
+
+            //Create a stream for the file
+            Stream stream = null;
+
+            //This controls how many bytes to read at a time and send to the client
+            int bytesToRead = 10000;
+
+            // Buffer to read bytes in chunk size specified above
+            byte[] buffer = new Byte[bytesToRead];
+
+            // The number of bytes read
             try
             {
-                Response.Clear();
-                Response.ContentType = "application/pdf";
-               // Response.AddHeader("Content-Disposition",
-               //     "attachment;filename=\"DesiCooksMenu.pdf\"");
+                //Create a WebRequest to get the file
+                HttpWebRequest fileReq = (HttpWebRequest)HttpWebRequest.Create("https://storage.googleapis.com/desicooks_bucket/FoodmenuPdfs/DesiCooksMenu.pdf");
 
-                Context.Response.WriteFile("http://storage.googleapis.com/desicooks_bucket/FoodmenuPdfs/DesiCooksMenu.pdf");
+                //Create a response for this request
+                HttpWebResponse fileResp = (HttpWebResponse)fileReq.GetResponse();
 
-                Response.Flush();
+                if (fileReq.ContentLength > 0)
+                    fileResp.ContentLength = fileReq.ContentLength;
 
-                Response.End();
+                //Get the Stream returned from the response
+                stream = fileResp.GetResponseStream();
+
+                // prepare the response to the client. resp is the client Response
+                var resp = HttpContext.Current.Response;
+
+                //Indicate the type of data being sent
+                resp.ContentType = "application/pdf";
+
+                //Name the file 
+                resp.AddHeader("Content-Disposition", "attachment; filename=\"" +"DesiCooksMenu.pdf" + "\"");
+                resp.AddHeader("Content-Length", fileResp.ContentLength.ToString());
+
+                int length;
+                do
+                {
+                    // Verify that the client is connected.
+                    if (resp.IsClientConnected)
+                    {
+                        // Read data into the buffer.
+                        length = stream.Read(buffer, 0, bytesToRead);
+
+                        // and write it out to the response's output stream
+                        resp.OutputStream.Write(buffer, 0, length);
+
+                        // Flush the data
+                        resp.Flush();
+
+                        //Clear the buffer
+                        buffer = new Byte[bytesToRead];
+                    }
+                    else
+                    {
+                        // cancel the download if client has disconnected
+                        length = -1;
+                    }
+                } while (length > 0); //Repeat until no data is read
             }
-            catch(Exception ex)
+            finally
             {
-
+                if (stream != null)
+                {
+                    //Close the input stream
+                    stream.Close();
+                }
             }
-           
           
         }
     }

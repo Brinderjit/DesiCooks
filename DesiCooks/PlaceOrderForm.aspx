@@ -143,7 +143,7 @@
                     </FooterTemplate>
                 </asp:Repeater>
 
-                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="Data Source=DESKTOP-656PRJ2\SQLEXPRESS;Initial Catalog=DesiCooks;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:DesiCooksConnectionString %>" SelectCommand="SELECT * FROM [Foods]"></asp:SqlDataSource>
             </div>
 
         </div>

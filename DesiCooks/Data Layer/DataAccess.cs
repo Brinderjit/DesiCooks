@@ -33,6 +33,7 @@ namespace DesiCooks.Data_Layer
             }
             catch (Exception e)
             {
+                ExceptionLogging.SendExcepToDB(e);
                 error = 1;
 
             }
@@ -81,6 +82,7 @@ namespace DesiCooks.Data_Layer
             }
             catch(Exception e)
             {
+                ExceptionLogging.SendExcepToDB(e);
                 error = 1;
 
             }
@@ -149,6 +151,7 @@ namespace DesiCooks.Data_Layer
             }
             catch (Exception e)
             {
+                ExceptionLogging.SendExcepToDB(e);
                 error = 1;
 
             }
